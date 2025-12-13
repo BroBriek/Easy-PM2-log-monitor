@@ -1,0 +1,25 @@
+{
+  "name": "easy-pm2-log-monitor",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "concurrently \"npm run start --prefix server\" \"npm run dev --prefix client\"",
+    "install-all": "npm install && npm install --prefix server && npm install --prefix client"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BroBriek/Easy-PM2-log-monitor.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BroBriek/Easy-PM2-log-monitor/issues"
+  },
+  "homepage": "https://github.com/BroBriek/Easy-PM2-log-monitor#readme",
+  "dependencies": {
+    "concurrently": "^9.2.1"
+  }
+}
