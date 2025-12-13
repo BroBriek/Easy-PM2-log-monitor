@@ -130,7 +130,7 @@ if (fs.existsSync(clientDistPath)) {
   app.use(express.static(clientDistPath));
   
   // Catch-all route to serve React app for non-API requests
-  app.get('*', (req, res) => {
+  app.get(/(.*)/, (req, res) => {
     res.sendFile(path.join(clientDistPath, 'index.html'));
   });
 } else {
