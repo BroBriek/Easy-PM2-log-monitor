@@ -112,6 +112,11 @@ function App() {
   // Filter logs for the selected process
   const displayLogs = logs.filter(l => l.pm_id === selectedPmId);
 
+  const handleClearLogs = () => {
+    if (selectedPmId === null) return;
+    setLogs(prev => prev.filter(l => l.pm_id !== selectedPmId));
+  };
+
   return (
     <Box sx={{ display: 'flex' }}>
       <Sidebar 
@@ -121,7 +126,11 @@ function App() {
       />
       <Box component="main" sx={{ flexGrow: 1, bgcolor: 'background.default', p: 0 }}>
         {selectedPmId !== null ? (
-          <LogViewer logs={displayLogs} loading={loadingLogs} />
+          <LogViewer 
+            logs={displayLogs} 
+            loading={loadingLogs} 
+            onClear={handleClearLogs}
+          />
         ) : (
           <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
             <Typography variant="h6" color="text.secondary">

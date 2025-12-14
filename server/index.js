@@ -42,7 +42,7 @@ pm2.connect((err) => {
         process_name: packet.process.name,
         pm_id: packet.process.pm_id,
         data: packet.data,
-        timestamp: new Date().toISOString()
+        timestamp: packet.at ? new Date(packet.at).toISOString() : new Date().toISOString()
       });
     });
 
@@ -52,7 +52,7 @@ pm2.connect((err) => {
         process_name: packet.process.name,
         pm_id: packet.process.pm_id,
         data: packet.data,
-        timestamp: new Date().toISOString()
+        timestamp: packet.at ? new Date(packet.at).toISOString() : new Date().toISOString()
       });
     });
   });

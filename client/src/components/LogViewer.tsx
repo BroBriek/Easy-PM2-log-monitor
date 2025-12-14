@@ -1,13 +1,14 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Box, Paper, Typography, FormControlLabel, Switch, Chip, Stack } from '@mui/material';
+import { Box, Paper, Typography, FormControlLabel, Switch, Chip, Stack, Button } from '@mui/material';
 import type { LogData } from '../types';
 
 interface LogViewerProps {
   logs: LogData[];
   loading: boolean;
+  onClear: () => void;
 }
 
-const LogViewer: React.FC<LogViewerProps> = ({ logs, loading }) => {
+const LogViewer: React.FC<LogViewerProps> = ({ logs, loading, onClear }) => {
   const endRef = useRef<HTMLDivElement>(null);
   const [showOut, setShowOut] = useState(true);
   const [showErr, setShowErr] = useState(true);
@@ -41,6 +42,9 @@ const LogViewer: React.FC<LogViewerProps> = ({ logs, loading }) => {
       <Box sx={{ mb: 2, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <Typography variant="h5">Log Console</Typography>
         <Stack direction="row" spacing={2}>
+          <Button variant="outlined" color="warning" onClick={onClear}>
+            Clear
+          </Button>
            <FormControlLabel 
             control={<Switch checked={showOut} onChange={(e) => setShowOut(e.target.checked)} color="info" />} 
             label="Stdout" 
